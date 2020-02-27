@@ -2,29 +2,29 @@ import React, { useState, useEffect } from 'react'
 import client from './sanity'
 import Prod from './Product'
 import { Container, Row } from 'react-bootstrap'
-// import PaypalExpressBtn from 'react-paypal-express-checkout';
+import PaypalExpressBtn from 'react-paypal-express-checkout';
 
 
 const Main = (props) => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [categories, setCategories] = useState([]);
-  // const onSuccess = (payment) => {
-  //   console.log("pay success:", payment);
-  // }
-  // const onCancel= (data) => {
-  //   console.log("payment no: ", data);
-  // }
-  // const onError = (err) =>{
-  //   console.log('payment fail', err )
-  // }
-  // let env = 'sandbox';
-  // let currency= 'USD';
+  const onSuccess = (payment) => {
+    console.log("pay success:", payment);
+  }
+  const onCancel= (data) => {
+    console.log("payment no: ", data);
+  }
+  const onError = (err) =>{
+    console.log('payment fail', err )
+  }
+  let env = 'sandbox';
+  let currency= 'USD';
   
-//   const paypalClient = {
-//     sandbox:    'Ae901bw6VX6fJQm_y4u2jDSE4EmnKaehNOG_FxloimD7wBcbtDPW2-p_Lqo3icTH8j4v5es5CRdudZEU',
-//     production: 'Ae901bw6VX6fJQm_y4u2jDSE4EmnKaehNOG_FxloimD7wBcbtDPW2-p_Lqo3icTH8j4v5es5CRdudZEU',
-// }
+  const paypalClient = {
+    sandbox:    'Ae901bw6VX6fJQm_y4u2jDSE4EmnKaehNOG_FxloimD7wBcbtDPW2-p_Lqo3icTH8j4v5es5CRdudZEU',
+    production: 'Ae901bw6VX6fJQm_y4u2jDSE4EmnKaehNOG_FxloimD7wBcbtDPW2-p_Lqo3icTH8j4v5es5CRdudZEU',
+}
   useEffect(() => {
     onLoad()
   }, [])
@@ -125,7 +125,7 @@ const Main = (props) => {
             )
           })}
           <h1>Total: {total}</h1>
-          {/* <PaypalExpressBtn env={env} client={paypalClient} currency={currency} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} /> */}
+          <PaypalExpressBtn env={env} client={paypalClient} currency={currency} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />
 
         </div>
       </article>
